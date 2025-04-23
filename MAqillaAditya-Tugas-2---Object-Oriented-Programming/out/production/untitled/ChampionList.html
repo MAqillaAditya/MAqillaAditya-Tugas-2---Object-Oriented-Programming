@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Champion List</title>
+  <style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        height: 250vh;
+        margin: 1;
+        font-family: Arial, sans-serif;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    #champion-list {
+        list-style-type: none;
+        padding: 0;
+        width: 75%;
+    }
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+    .button {
+        padding: 10px 40px;
+        border: none;
+        cursor: pointer;
+        color: white;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-left: 150px;
+    }
+    .green {
+        background-color: green;
+    }
+    .red {
+        background-color: red;
+    }
+  </style>
+</head>
+<body>
+<h1>Champion List</h1>
+<ul id="champion-list"></ul>
+
+<script>
+  const champions = [
+      { name: "Aatrox, Ahri", status: "Cleared" },
+      { name: "Akali, Akshan", status: "Cleared" },
+      { name: "Alistar, Ambessa", status: "Not Cleared" },
+      { name: "Amumu, Anivia", status: "Not Cleared" },
+      { name: "Annie, Aphelios", status: "Cleared" },
+      { name: "Ashe, Aurelion Sol", status: "Not Cleared" },
+      { name: "Aurora, Azir", status: "Cleared" },
+      { name: "Bard, Bel'Veth", status: "Cleared" },
+      { name: "Blitzcrank, Brand", status: "Not Cleared" },
+      { name: "Braum, Briar", status: "Not Cleared" },
+      { name: "Caitlyn, Camille", status: "Cleared" },
+      { name: "Cassiopeia, Cho'Gath", status: "Not Cleared" },
+      { name: "Corki, Darius", status: "Cleared" },
+      { name: "Diana, Dr.Mundo", status: "Cleared" },
+      { name: "Draven, Ekko", status: "Not Cleared" },
+      { name: "Elise, Evelynn", status: "Not Cleared" },
+      { name: "Ezreal, Fiddlestick", status: "Cleared" },
+      { name: "Fiora, Fizz", status: "Not Cleared" },
+      { name: "Galio, Gangplank", status: "Not Cleared" },
+      { name: "Garen, Gnar", status: "Not Cleared" },
+      { name: "Gragas, Graves", status: "Not Cleared" },
+      { name: "Gwen, Hecarim", status: "Not Cleared" },
+      { name: "Heimerdinger, Hwei", status: "Not Cleared" },
+      { name: "Illaoi, Irelia", status: "Not Cleared" },
+      { name: "Ivern, Janna", status: "Not Cleared" },
+      { name: "Jarvin IV, Jax", status: "Not Cleared" },
+      { name: "Jayce, Jhin", status: "Not Cleared" },
+      { name: "Jinx, K'sante", status: "Not Cleared" },
+      { name: "Kai'sa, Kalista", status: "Not Cleared" },
+      { name: "Karma, Karthus", status: "Not Cleared" },
+  ];
+
+        const championList = document.getElementById('champion-list');
+
+        champions.forEach(champion => {
+            const listItem = document.createElement('li');
+            listItem.textContent = champion.name;
+
+            const button = document.createElement('button');
+            button.textContent = champion.status;
+            button.className = champion.status === "Cleared" ? 'button green' : 'button red';
+
+            button.addEventListener('click', () => {
+                // Toggle the status and button color
+                if (button.textContent === "Cleared") {
+                    button.textContent = "Not Cleared";
+                    button.className = 'button red';
+                } else {
+                    button.textContent = "Cleared";
+                    button.className = 'button green';
+                }
+            });
+
+            listItem.appendChild(button);
+            championList.appendChild(listItem);
+        });
+</script>
+</body>
+</html>
